@@ -1,0 +1,13 @@
+version: '3'
+services:
+  calc:
+    build: .
+    volumes: 
+      - /home/calc/build
+      - .:/home/calc
+    stdin_open: true
+    tty: true
+  jenkins:
+    image: jenkins/jenkins
+    ports:
+      - "8080:8080"
