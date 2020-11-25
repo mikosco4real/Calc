@@ -17,3 +17,23 @@ add_executable(
     src/main.cpp
     src/calc.cpp
 )
+
+## Locate GTest
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+## Adding GTest Dependencies and setting up my program for ctest
+
+enable_testing()
+include(GoogleTest)
+
+add_executable(
+    test_calc
+    test/main.cpp
+    src/calc.cpp
+    test/testCalc.cpp
+    )
+
+target_link_libraries(test_calc ${GTEST_LIBRARIES} pthread)
+
+gtest_add_tests(TARGET test_calc)
