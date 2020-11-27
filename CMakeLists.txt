@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.5)
 
 # Set Variables (build type = Debug/Release)
 set(CMAKE_BUILD_TYPE Debug)

@@ -3,17 +3,22 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                echo 'Building my app'
+                sh 'apt update && apt upgrade -y'
+                sh 'apt install gcc -y'
+                sh 'apt install cmake -y'
+                sh 'mkdir -p build'
+                sh 'cd build && cmake ../'
+                sh 'make'
             }
         }
         stage('Test'){
             steps{
-                echo 'Testing my app'
+                sh 'cd build && ctest '
             }
         }
         stage('Deploy'){
             steps{
-                echo 'Deploying my app'
+                echo 'Deploying my app on AWS'
             }
         }
     }
